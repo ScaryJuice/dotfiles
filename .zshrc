@@ -5,6 +5,7 @@ eval "$(starship init zsh)"
 alias ls='ls -la --group-directories-first --color=auto'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dh='unset HISTFILE && rm .histfile && rm -rf .cache'
+alias steam='flatpak run com.valvesoftware.Steam'
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
