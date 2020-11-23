@@ -2,14 +2,19 @@ neofetch
 
 eval "$(starship init zsh)"
 
+# Aliases
 alias ls='ls -la --group-directories-first --color=auto'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dh='unset HISTFILE && rm .histfile && rm -rf .cache && rm .viminfo'
+alias dh='unset HISTFILE && rm -rf .cache && rm .viminfo && rm .lesshst'
+alias cp='cp -iv'
+alias mv='mv -iv'
 
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+# History in cache directory:
+HISTSIZE=10000000
+SAVEHIST=10000000
+HISTFILE=~/.cache/zsh/history
 
+# Autocomplete
 zstyle :compinstall filename '/home/arch/.zshrc'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
@@ -17,6 +22,7 @@ zstyle ':completion:*' rehash true
 autoload -Uz compinit
 compinit
 
+# Arch Wiki suggested key bindings
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
