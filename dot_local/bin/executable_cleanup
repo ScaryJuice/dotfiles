@@ -1,0 +1,5 @@
+rm -rfv .cache
+rm -rfv .lesshst
+rm -rfv .viminfo
+rm -rfv .local/share/Steam/appcache/httpcache/*
+rm -rfv .local/share/Steam/config/htmlcache/*

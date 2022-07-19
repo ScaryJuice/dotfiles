@@ -1,0 +1,10 @@
+#!/bin/sh
+
+xrandr --output eDP --set TearFree on
+xinput set-prop 13 306 1 &
+mkdir .cache/zsh &
+sh ~/.fehbg &
+unclutter &
+picom &
+dunst &
+i3
