@@ -12,6 +12,7 @@ htop
 hugo
 i3
 kitty
+libnotify
 lsof
 lxappearance
 mpv
