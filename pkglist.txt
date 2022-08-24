@@ -6,6 +6,7 @@ chromium
 dunst
 feh
 firefox
+fzf
 git
 go
 htop
