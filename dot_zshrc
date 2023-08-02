@@ -10,13 +10,11 @@ alias ls='ls -lah --group-directories-first --color=auto'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -rfv'
-alias cm='chezmoi'
-alias ct='comptoggle'
+alias bb='bleachbit -c --preset'
 
 # History in cache directory:
 HISTSIZE=10000000
 SAVEHIST=10000000
-HISTFILE=~/.cache/zsh/history
 
 # Autocomplete
 zstyle :compinstall filename '$HOME/.zshrc'
