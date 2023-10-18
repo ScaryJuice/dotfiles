@@ -1,6 +1,7 @@
 chezmoi
 chromium
 firefox
+fwupd
 git
 gnome
 go
