@@ -1,7 +1,4 @@
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-
-export EDITOR="vim"
 
 eval "$(starship init zsh)"
 
@@ -11,10 +8,6 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -rfv'
 alias bb='bleachbit -c --preset'
-
-# History in cache directory:
-HISTSIZE=10000000
-SAVEHIST=10000000
 
 # Autocomplete
 zstyle :compinstall filename '$HOME/.zshrc'
