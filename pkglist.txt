@@ -1,3 +1,4 @@
+bleachbit
 chezmoi
 chromium
 firefox
