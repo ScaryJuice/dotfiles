@@ -1,6 +1,7 @@
 bleachbit
 chezmoi
 chromium
+dolphin
 firefox
 fwupd
 git
