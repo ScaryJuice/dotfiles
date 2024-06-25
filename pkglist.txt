@@ -1,3 +1,4 @@
+ark
 bleachbit
 chezmoi
 chromium
@@ -6,15 +7,22 @@ firefox
 fwupd
 git
 go
+gwenview
+kate
 kitty
+man-db
 networkmanager
+networkmanager-openvpn
+okular
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
+pacman-contrib
 pipewire
 pipewire-pulse
 plasma
 rust
+sddm
 starship
 zsh
