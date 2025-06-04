@@ -5,15 +5,13 @@ chromium
 dolphin
 firefox
 fwupd
+ghostty
 git
 go
-gwenview
-kate
-kitty
+libreoffice-fresh
 man-db
 networkmanager
 networkmanager-openvpn
-okular
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
