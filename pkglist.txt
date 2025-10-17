@@ -8,6 +8,8 @@ fwupd
 ghostty
 git
 go
+gwenview
+kate
 libreoffice-fresh
 man-db
 networkmanager
@@ -16,6 +18,7 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
+okular
 pacman-contrib
 pipewire
 pipewire-pulse
@@ -23,4 +26,5 @@ plasma
 rust
 sddm
 starship
+vlc
 zsh
