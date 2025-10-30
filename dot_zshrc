@@ -1,6 +1,13 @@
-export PATH="$HOME/.local/bin:$PATH"
-
 eval "$(starship init zsh)"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+export PATH="$HOME/.local/bin:$PATH"
 
 export HISTFILE=$HOME/.hist_zsh
 export HISTSIZE=5000000
@@ -77,3 +84,4 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
+
