@@ -9,7 +9,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="$HOME/.local/bin:$PATH"
 
-export HISTFILE=$HOME/.hist_zsh
+export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=5000000
 export SAVEHIST=$HISTSIZE
 
