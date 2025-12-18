@@ -1,6 +1,5 @@
 # Initialize Starship prompt for PowerShell
-# Direct call avoids security risks of Invoke-Expression
-&starship init powershell
+Invoke-Expression (&starship init powershell)
 
 # Bind TAB key to menu-style autocompletion
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
@@ -24,3 +23,4 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
         [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
     }
 }
+
