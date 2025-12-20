@@ -9,7 +9,6 @@ ghostty
 git
 go
 gwenview
-kate
 libreoffice-fresh
 man-db
 networkmanager
