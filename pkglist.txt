@@ -7,8 +7,6 @@ firefox
 fwupd
 ghostty
 git
-go
-gwenview
 libreoffice-fresh
 man-db
 networkmanager
@@ -17,7 +15,6 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
-okular
 pacman-contrib
 pipewire
 pipewire-pulse
