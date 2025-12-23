@@ -20,5 +20,4 @@ pipewire-pulse
 plasma
 sddm
 starship
-vlc
 zsh
