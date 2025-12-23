@@ -10,7 +10,6 @@ git
 libreoffice-fresh
 man-db
 networkmanager
-networkmanager-openvpn
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
@@ -19,7 +18,6 @@ pacman-contrib
 pipewire
 pipewire-pulse
 plasma
-rust
 sddm
 starship
 vlc
