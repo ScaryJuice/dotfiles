@@ -1,37 +1,53 @@
-eval "$(starship init zsh)"
+#######################################
+# Basic Environment
+#######################################
 
-# bun
+# Use portable HOME-based paths
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+# Idiomatic zsh PATH handling (prevents duplicates)
+path=(
+  "$BUN_INSTALL/bin"
+  "$HOME/.opencode/bin"
+  "$HOME/.local/bin"
+  $path
+)
 
-export PATH="$HOME/.local/bin:$PATH"
+#######################################
+# History Configuration
+#######################################
 
-export HISTFILE=$HOME/.zsh_history
-export HISTSIZE=5000000
-export SAVEHIST=$HISTSIZE
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=200000
+export SAVEHIST=200000
 
-# HISTORY
-setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
-setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
-setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
-setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
-setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
-setopt SHARE_HISTORY             # Share history between all sessions.
-# END HISTORY
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt EXTENDED_HISTORY
 
-# Aliases
+#######################################
+# Aliases (Safe Defaults)
+#######################################
+
 alias ls='ls -lah --group-directories-first --color=auto'
 alias cp='cp -iv'
 alias mv='mv -iv'
-alias rm='rm -rfv'
+
+# Safer rm (interactive)
+alias rm='rm -iv'
+
+# Explicitly dangerous commands when you *really* want it
+alias rrm='rm -rfv'
 alias bb='bleachbit -c --preset'
 
+#######################################
 # Autocomplete
+#######################################
 zstyle :compinstall filename '$HOME/.zshrc'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
@@ -39,9 +55,11 @@ zstyle ':completion:*' rehash true
 autoload -Uz compinit
 compinit
 
-# Arch Wiki suggested key bindings
-# create a zkbd compatible hash;
-# to add other keys to this hash, see: man 5 terminfo
+#######################################
+# Key Bindings (Arch Wiki Style)
+#######################################
+
+# Create a zkbd-compatible key hash
 typeset -g -A key
 
 key[Home]="${terminfo[khome]}"
@@ -57,7 +75,7 @@ key[PageUp]="${terminfo[kpp]}"
 key[PageDown]="${terminfo[knp]}"
 key[ShiftTab]="${terminfo[kcbt]}"
 
-# setup key accordingly
+# Bind keys safely (only if present)
 [[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"      beginning-of-line
 [[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"       end-of-line
 [[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"    overwrite-mode
@@ -71,17 +89,35 @@ key[ShiftTab]="${terminfo[kcbt]}"
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"  end-of-buffer-or-history
 [[ -n "${key[ShiftTab]}"  ]] && bindkey -- "${key[ShiftTab]}"  reverse-menu-complete
 
-# Finally, make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start {
-		echoti smkx
-	}
-	function zle_application_mode_stop {
-		echoti rmkx
-	}
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+#######################################
+# Bun Shell Completions
+#######################################
+
+if [[ -s "$BUN_INSTALL/_bun" ]]; then
+  source "$BUN_INSTALL/_bun"
 fi
 
+#######################################
+# ZLE / Terminal Application Mode Fix
+#######################################
+
+# Ensure application mode is exited cleanly (prevents broken terminals)
+if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+  function zle-line-init() {
+    echoti smkx
+  }
+  function zle-line-finish() {
+    echoti rmkx
+  }
+  zle -N zle-line-init
+  zle -N zle-line-finish
+fi
+
+#######################################
+# Prompt (Starship)
+#######################################
+
+# Initialize last so it can see all settings
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
