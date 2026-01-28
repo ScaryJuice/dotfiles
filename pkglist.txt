@@ -18,7 +18,6 @@ noto-fonts-extra
 okular
 pacman-contrib
 pipewire
-pipewire-pulse
 plasma
 sddm
 starship
