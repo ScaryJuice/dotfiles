@@ -98,6 +98,13 @@ if [[ -s "$BUN_INSTALL/_bun" ]]; then
 fi
 
 #######################################
+# UV Shell Completion
+#######################################
+
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx generate-shell-completion zsh)"
+
+#######################################
 # ZLE / Terminal Application Mode Fix
 #######################################
 
